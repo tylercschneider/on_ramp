@@ -5,7 +5,7 @@ module Onramp
     extend ActiveSupport::Concern
 
     included do
-      has_many :onramp_progresses,
+      has_many Onramp.config.association_name,
         class_name: Onramp.config.progress_class,
         as: :progressable,
         dependent: :destroy
@@ -17,7 +17,7 @@ module Onramp
 
       first_step = flow.first_step
 
-      onramp_progresses.create!(
+      send(Onramp.config.association_name).create!(
         flow_name: flow_name.to_s,
         current_step: first_step&.name&.to_s,
         started_at: Time.current
@@ -25,7 +25,7 @@ module Onramp
     end
 
     def onboarding_progress(flow_name)
-      onramp_progresses.find_by(flow_name: flow_name.to_s)
+      send(Onramp.config.association_name).find_by(flow_name: flow_name.to_s)
     end
 
     def onboarding_complete?(flow_name)

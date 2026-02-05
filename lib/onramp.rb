@@ -10,11 +10,12 @@ end
 
 module Onramp
   class Configuration
-    attr_accessor :flows_path, :progress_class
+    attr_accessor :flows_path, :progress_class, :association_name
 
     def initialize
       @flows_path = nil
       @progress_class = "Onramp::Progress"
+      @association_name = :onramp_progresses
     end
   end
 
