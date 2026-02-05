@@ -1,0 +1,17 @@
+Onramp::Registry.register_flow(:<%= flow_name %>) do
+  description "<%= class_name %> onboarding flow"
+
+  step :welcome do
+    title "Welcome"
+    component "onboarding/steps/welcome"
+  end
+
+  step :complete do
+    title "Complete"
+    component "onboarding/steps/complete"
+  end
+
+  on_complete do |context|
+    # Add completion logic here
+  end
+end

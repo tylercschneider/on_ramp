@@ -1,0 +1,8 @@
+Onramp.configure do |config|
+  # Path to your flow definition files
+  config.flows_path = Rails.root.join("app/onboarding/flows")
+
+  # Model class for storing progress (default: "Onramp::Progress")
+  # Uncomment to use a custom model:
+  # config.progress_class = "OnboardingProgress"
+end
