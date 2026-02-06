@@ -1,5 +1,7 @@
 # Onramp
 
+[![CI](https://github.com/tylercschneider/onramp/actions/workflows/ci.yml/badge.svg)](https://github.com/tylercschneider/onramp/actions/workflows/ci.yml)
+
 A flexible onboarding engine for Rails applications. Onramp provides a DSL for defining multi-step onboarding flows with conditional branching, progress tracking, and callbacks.
 
 ## Installation

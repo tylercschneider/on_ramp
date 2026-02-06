@@ -1,0 +1,24 @@
+require:
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Exclude:
+    - "test/dummy/**/*"
+    - "vendor/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "test/**/*"
+    - "*.gemspec"
+
+Style/TrivialAccessors:
+  Exclude:
+    - "lib/onramp/dsl/*.rb"
