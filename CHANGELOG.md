@@ -11,12 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release
 - Flow and Step DSL for defining onboarding flows
 - Registry for managing flows
-- Onrampable concern for models
+- OnRampable concern for models
 - Progress model for tracking onboarding state
 - Conditional branching with `branches_to`
 - Conditional visibility with `show_if`
 - Step callbacks with `after_complete`
 - Flow completion callbacks with `on_complete`
 - Configurable progress class and association name
-- `onramp:install` generator for migration and initializer
-- `onramp:flow` generator for scaffolding new flows
+- `on_ramp:install` generator for migration and initializer
+- `on_ramp:flow` generator for scaffolding new flows
