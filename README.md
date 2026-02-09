@@ -1,22 +1,22 @@
-# Onramp
+# OnRamp
 
-[![CI](https://github.com/tylercschneider/onramp/actions/workflows/ci.yml/badge.svg)](https://github.com/tylercschneider/onramp/actions/workflows/ci.yml)
+[![CI](https://github.com/tylercschneider/on_ramp/actions/workflows/ci.yml/badge.svg)](https://github.com/tylercschneider/on_ramp/actions/workflows/ci.yml)
 
-A flexible onboarding engine for Rails applications. Onramp provides a DSL for defining multi-step onboarding flows with conditional branching, progress tracking, and callbacks.
+A flexible onboarding engine for Rails applications. OnRamp provides a DSL for defining multi-step onboarding flows with conditional branching, progress tracking, and callbacks.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "onramp"
+gem "on_ramp"
 ```
 
 Then run:
 
 ```bash
 bundle install
-rails generate onramp:install
+rails generate on_ramp:install
 rails db:migrate
 ```
 
@@ -25,16 +25,16 @@ rails db:migrate
 ### Configuration
 
 ```ruby
-# config/initializers/onramp.rb
-Onramp.configure do |config|
+# config/initializers/on_ramp.rb
+OnRamp.configure do |config|
   config.flows_path = Rails.root.join("app/onboarding/flows")
-  config.progress_class = "OnboardingProgress"  # or use default "Onramp::Progress"
+  config.progress_class = "OnboardingProgress"  # or use default "OnRamp::Progress"
 end
 
 # Load flows on app boot
 Rails.application.config.to_prepare do
-  Onramp::Registry.reset!
-  Dir[Rails.root.join(Onramp.config.flows_path, "**/*.rb")].each { |f| load(f) }
+  OnRamp::Registry.reset!
+  Dir[Rails.root.join(OnRamp.config.flows_path, "**/*.rb")].each { |f| load(f) }
 end
 ```
 
@@ -42,7 +42,7 @@ end
 
 ```ruby
 # app/onboarding/flows/default_flow.rb
-Onramp::Registry.register_flow(:default) do
+OnRamp::Registry.register_flow(:default) do
   description "Main onboarding flow"
 
   step :welcome do
@@ -82,11 +82,11 @@ Onramp::Registry.register_flow(:default) do
 end
 ```
 
-### Making a Model Onrampable
+### Making a Model OnRampable
 
 ```ruby
 class Account < ApplicationRecord
-  include Onramp::Onrampable
+  include OnRamp::OnRampable
 end
 ```
 
@@ -98,13 +98,13 @@ class OnboardingController < ApplicationController
     @progress = current_account.onboarding_progress(:default)
     redirect_to root_path if @progress&.completed?
 
-    flow = Onramp::Registry[:default]
+    flow = OnRamp::Registry[:default]
     @step = flow.find_step(@progress.current_step.to_sym)
   end
 
   def update
     @progress = current_account.onboarding_progress(:default)
-    flow = Onramp::Registry[:default]
+    flow = OnRamp::Registry[:default]
     current_step = flow.find_step(@progress.current_step.to_sym)
 
     # Run step callback
@@ -144,7 +144,7 @@ end
 - `step :name { }` - Define a step
 - `on_complete { |ctx| }` - Callback when flow completes
 
-### Onrampable Methods
+### OnRampable Methods
 
 - `start_onboarding!(flow_name)` - Start onboarding, returns progress record
 - `onboarding_progress(flow_name)` - Get current progress for a flow
@@ -165,7 +165,7 @@ end
 ### Install Generator
 
 ```bash
-rails generate onramp:install
+rails generate on_ramp:install
 ```
 
 Creates migration and initializer.
@@ -173,7 +173,7 @@ Creates migration and initializer.
 ### Flow Generator
 
 ```bash
-rails generate onramp:flow my_flow
+rails generate on_ramp:flow my_flow
 ```
 
 Creates a new flow definition file.
