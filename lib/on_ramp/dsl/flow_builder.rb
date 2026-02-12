@@ -1,5 +1,5 @@
-require "on_ramp/flow"
-require "on_ramp/dsl/step_builder"
+require 'on_ramp/flow'
+require 'on_ramp/dsl/step_builder'
 
 module OnRamp
   module Dsl
@@ -17,11 +17,10 @@ module OnRamp
         @on_complete = nil
       end
 
-      # rubocop:disable Style/TrivialAccessors -- DSL method, not a simple setter
+      # -- DSL method, not a simple setter
       def description(value)
         @description = value
       end
-      # rubocop:enable Style/TrivialAccessors
 
       def step(name, &)
         @steps << StepBuilder.build(name, &)

@@ -1,23 +1,23 @@
-require "rails/generators"
-require "rails/generators/active_record"
+require 'rails/generators'
+require 'rails/generators/active_record'
 
 module OnRamp
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include ActiveRecord::Generators::Migration
 
-      source_root File.expand_path("templates", __dir__)
+      source_root File.expand_path('templates', __dir__)
 
-      def create_migration
-        migration_template "migration.rb.erb", "db/migrate/create_on_ramp_progresses.rb"
+      def copy_migration
+        migration_template 'migration.rb.erb', 'db/migrate/create_on_ramp_progresses.rb'
       end
 
       def create_initializer
-        template "initializer.rb.erb", "config/initializers/on_ramp.rb"
+        template 'initializer.rb.erb', 'config/initializers/on_ramp.rb'
       end
 
       def create_flows_directory
-        empty_directory "app/onboarding/flows"
+        empty_directory 'app/onboarding/flows'
       end
 
       private

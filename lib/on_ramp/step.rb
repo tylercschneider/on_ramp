@@ -13,11 +13,13 @@ module OnRamp
 
     def visible?(context)
       return true unless show_if
+
       show_if.call(context)
     end
 
     def next_step_name(context)
       return nil if branches.empty?
+
       branch = branches.find { |b| b[:if].call(context) }
       branch&.dig(:to)
     end

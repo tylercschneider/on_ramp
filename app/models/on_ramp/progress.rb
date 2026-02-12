@@ -1,6 +1,6 @@
 module OnRamp
   class Progress < ApplicationRecord
-    self.table_name = "on_ramp_progresses"
+    self.table_name = 'on_ramp_progresses'
 
     belongs_to :progressable, polymorphic: true
 
@@ -32,7 +32,7 @@ module OnRamp
     end
 
     def chosen_path
-      metadata["chosen_path"]
+      metadata['chosen_path']
     end
   end
 end

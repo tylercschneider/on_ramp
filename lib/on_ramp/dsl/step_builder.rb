@@ -1,4 +1,4 @@
-require "on_ramp/step"
+require 'on_ramp/step'
 
 module OnRamp
   module Dsl
@@ -18,7 +18,7 @@ module OnRamp
         @after_complete = nil
       end
 
-      # rubocop:disable Style/TrivialAccessors -- DSL methods, not simple setters
+      # -- DSL methods, not simple setters
       def title(value)
         @title = value
       end
@@ -30,10 +30,9 @@ module OnRamp
       def show_if(condition)
         @show_if = condition
       end
-      # rubocop:enable Style/TrivialAccessors
 
       def branches_to(target, if:)
-        @branches << {to: target, if: binding.local_variable_get(:if)}
+        @branches << { to: target, if: binding.local_variable_get(:if) }
       end
 
       def after_complete(&block)
