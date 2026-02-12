@@ -1,4 +1,4 @@
-require "on_ramp/registry"
+require 'on_ramp/registry'
 
 module OnRamp
   module OnRampable
@@ -6,9 +6,9 @@ module OnRamp
 
     included do
       has_many OnRamp.config.association_name,
-        class_name: OnRamp.config.progress_class,
-        as: :progressable,
-        dependent: :destroy
+               class_name: OnRamp.config.progress_class,
+               as: :progressable,
+               dependent: :destroy
     end
 
     def start_onboarding!(flow_name)
@@ -35,6 +35,7 @@ module OnRamp
     def needs_onboarding?(flow_name)
       progress = onboarding_progress(flow_name)
       return true unless progress
+
       !progress.completed? && !progress.skipped?
     end
   end

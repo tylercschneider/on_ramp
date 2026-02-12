@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-minitest
 
 AllCops:
@@ -22,3 +22,23 @@ Metrics/BlockLength:
 Style/TrivialAccessors:
   Exclude:
     - "lib/on_ramp/dsl/*.rb"
+
+Metrics/ParameterLists:
+  Exclude:
+    - "lib/on_ramp/step.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "test/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "test/**/*"
+
+Minitest/MultipleAssertions:
+  Exclude:
+    - "test/**/*"
+
+Layout/LineLength:
+  Exclude:
+    - "*.gemspec"

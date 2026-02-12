@@ -1,11 +1,11 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gemspec name: "on_ramp"
+gemspec name: 'on_ramp'
 
 group :development, :test do
-  gem "sqlite3"
-  gem "minitest"
-  gem "rake"
-  gem "rubocop"
-  gem "rubocop-minitest"
+  gem 'minitest'
+  gem 'rake'
+  gem 'rubocop'
+  gem 'rubocop-minitest'
+  gem 'sqlite3'
 end

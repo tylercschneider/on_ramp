@@ -1,11 +1,11 @@
-require "on_ramp/version"
-require "on_ramp/step"
-require "on_ramp/flow"
-require "on_ramp/registry"
+require 'on_ramp/version'
+require 'on_ramp/step'
+require 'on_ramp/flow'
+require 'on_ramp/registry'
 
 if defined?(Rails)
-  require "on_ramp/engine"
-  require "on_ramp/on_rampable"
+  require 'on_ramp/engine'
+  require 'on_ramp/on_rampable'
 end
 
 module OnRamp
@@ -14,7 +14,7 @@ module OnRamp
 
     def initialize
       @flows_path = nil
-      @progress_class = "OnRamp::Progress"
+      @progress_class = 'OnRamp::Progress'
       @association_name = :on_ramp_progresses
     end
   end
